@@ -1,0 +1,29 @@
+import {Action} from "@ngrx/store";
+import {Pizza} from "../../models/pizza.model";
+
+export const LOAD_PIZZAS = '[Products] Load Pizzas';
+export const LOAD_PIZZAS_FAIL = '[Products] Load Pizzas Fail';
+export const LOAD_PIZZAS_SUCCESS = '[Products] Load Pizzas Success';
+
+// Action creators
+// ngrx action interface to ensure type checking in typescript
+export class LoadPizzas implements Action {
+  readonly type = LOAD_PIZZAS;
+}
+
+export class LoadPizzasFail implements Action {
+  readonly type = LOAD_PIZZAS_FAIL;
+
+  constructor(public payload: any) {
+  }
+}
+
+export class LoadPizzasSuccess implements Action {
+  readonly type = LOAD_PIZZAS_SUCCESS;
+
+  constructor(public payload: Pizza[]) {
+  }
+}
+
+//Action Types
+export type  PizzasAction = LoadPizzas | LoadPizzasSuccess | LoadPizzasFail;
