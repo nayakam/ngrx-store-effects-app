@@ -18,11 +18,11 @@ import {Observable} from "rxjs/Observable";
         </a>
       </div>
       <div class="products__list">
-        <div *ngIf="!((pizzas | async)?.length)">
+        <div *ngIf="!((pizzas$ | async)?.length)">
           No pizzas, add one to get started.
         </div>
         <pizza-item
-          *ngFor="let pizza of (pizzas | async)"
+          *ngFor="let pizza of (pizzas$ | async)"
           [pizza]="pizza">
         </pizza-item>
       </div>
@@ -31,7 +31,7 @@ import {Observable} from "rxjs/Observable";
 })
 export class ProductsComponent implements OnInit {
   //pizzas: Pizza[];
-  pizzas: Observable<Pizza[]>;
+  pizzas$: Observable<Pizza[]>;
 
   constructor(private store: Store<fromStore.ProductsState>) {
   }
@@ -52,6 +52,7 @@ export class ProductsComponent implements OnInit {
     //   this.pizzas = state;
     // });
 
-    this.pizzas = this.store.select(fromStore.getAllPizzas);
+    this.pizzas$ = this.store.select(fromStore.getAllPizzas);
+    this.store.dispatch(new fromStore.LoadPizzas());
   }
 }

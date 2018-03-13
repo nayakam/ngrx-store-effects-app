@@ -3,21 +3,24 @@ import {LOAD_PIZZAS, LOAD_PIZZAS_FAIL, LOAD_PIZZAS_SUCCESS, PizzasAction} from "
 
 export interface PizzaState {
   data: Pizza[];
+  //entities: { [id: number]: Pizza };
   loaded: boolean;
   loading: boolean;
 }
 
 export const initialState: PizzaState = {
-  data: [{
-    "name": "Plain Ol' Pepperoni",
-    "toppings": [
-      {
-        "id": 10,
-        "name": "pepperoni"
-      }
-    ],
-    "id": 3
-  }],
+  // data: [{
+  //   "name": "Plain Ol' Pepperoni",
+  //   "toppings": [
+  //     {
+  //       "id": 10,
+  //       "name": "pepperoni"
+  //     }
+  //   ],
+  //   "id": 3
+  // }],
+  data: [],
+  //entities: {},
   loaded: false,
   loading: false,
 };
@@ -33,9 +36,28 @@ export function reducer(state = initialState,
     }
 
     case LOAD_PIZZAS_SUCCESS: {
-      return {
-        ...state, loading: false, loaded: true
+      // const pizzas = action.payload;
+      // console.log(pizzas);
+      // const entities = pizzas.reduce((entities: { [id: number]: Pizza }, pizza: Pizza) => {
+      //     return {
+      //       ...entities,
+      //       [pizza.id]: pizza
+      //     };
+      //   },
+      //   {...state.entities});
+      // return {
+      //   ...state, loading: false, loaded: true, entities,
+      // };
+      const data = action.payload;
+      console.log(data);
+      const re: PizzaState = {
+        ...state,
+        loading: false,
+        loaded: true,
+        data,
       };
+      console.log(re);
+      return re;
     }
 
     case LOAD_PIZZAS_FAIL: {
