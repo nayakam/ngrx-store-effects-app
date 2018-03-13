@@ -30,28 +30,12 @@ import {Observable} from "rxjs/Observable";
   `,
 })
 export class ProductsComponent implements OnInit {
-  //pizzas: Pizza[];
   pizzas$: Observable<Pizza[]>;
 
   constructor(private store: Store<fromStore.ProductsState>) {
   }
 
-  //constructor(private pizzaService: PizzasService) {}
-
   ngOnInit() {
-    // this.pizzaService.getPizzas().subscribe(pizzas => {
-    //   this.pizzas = pizzas;
-    // });
-
-    // this.store.select<any>('products').subscribe(state => {
-    //   console.log(state);
-    // });
-    //
-    // this.store.select(fromStore.getAllPizzas).subscribe(state => {
-    //   console.log(state);
-    //   this.pizzas = state;
-    // });
-
     this.pizzas$ = this.store.select(fromStore.getAllPizzas);
     this.store.dispatch(new fromStore.LoadPizzas());
   }
