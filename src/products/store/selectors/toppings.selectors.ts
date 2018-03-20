@@ -1,6 +1,6 @@
 import {createSelector} from "@ngrx/store";
 import * as fromFeature from "../reducers";
-import * as fromToppings from "../reducers/topping.reducer";
+import * as fromToppingsReducer from "../reducers/topping.reducer";
 
 export const getToppingsState = createSelector(
   fromFeature.getProductsState,
@@ -9,7 +9,12 @@ export const getToppingsState = createSelector(
 
 export const getToppingsEntities = createSelector(
   getToppingsState,
-  fromToppings.getToppingEntities
+  fromToppingsReducer.getToppingEntities
+);
+
+export const getSelectedToppings = createSelector(
+  getToppingsState,
+  fromToppingsReducer.getSelectedToppings
 );
 
 export const getAllToppings = createSelector(
@@ -21,10 +26,10 @@ export const getAllToppings = createSelector(
 
 export const getToppingsLoaded = createSelector(
   getToppingsState,
-  fromToppings.getToppingLoaded
+  fromToppingsReducer.getToppingLoaded
 );
 
 export const getToppingsLoading = createSelector(
   getToppingsState,
-  fromToppings.getToppingLoading
+  fromToppingsReducer.getToppingLoading
 );
