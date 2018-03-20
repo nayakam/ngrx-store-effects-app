@@ -34,5 +34,4 @@ export class CustomSerializer implements fromRouter.RouterStateSerializer<Router
     console.log(url, queryParams, params);
     return {url, queryParams, params} as RouterStateUrl;
   }
-
 }
