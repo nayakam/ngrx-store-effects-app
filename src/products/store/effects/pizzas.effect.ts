@@ -8,6 +8,7 @@ import * as fromServices from '../../services';
 import {Observable} from "rxjs/Observable";
 import {Action} from "@ngrx/store";
 
+import * as fromRoot from '../../../app/store';
 
 @Injectable()
 export class PizzasEffect {
@@ -25,13 +26,23 @@ export class PizzasEffect {
   );
 
   @Effect()
-  createPizza$: Observable<Action> = this.actions$.ofType(pizzaActions.LOAD_PIZZAS).pipe(
+  createPizza$: Observable<Action> = this.actions$.ofType(pizzaActions.CREATE_PIZZA).pipe(
     map((action: pizzaActions.CreatePizza) => action.payload),
     switchMap(pizza => {
       return this.pizzaService.createPizza(pizza).pipe(
         map(pizza => new pizzaActions.CreatePizzaSuccess(pizza)),
         catchError(error => of(new pizzaActions.CreatePizzaFail(error)))
       );
+    })
+  );
+
+  @Effect()
+  createPizzaSuccess$ = this.actions$.ofType(pizzaActions.CREATE_PIZZA_SUCCESS).pipe(
+    map((action: pizzaActions.CreatePizzaSuccess) => action.payload),
+    map(pizza => {
+      return new fromRoot.Go({
+        path: ['products', pizza.id],
+      })
     })
   );
 
@@ -59,4 +70,11 @@ export class PizzasEffect {
     })
   );
 
+  @Effect()
+  handlePizzaSuccess$ = this.actions$.ofType(pizzaActions.UPDATE_PIZZA_SUCCESS,
+    pizzaActions.REMOVE_PIZZA_SUCCESS).pipe(
+    map(pizza => {
+      return new fromRoot.Go({path: ['products'],});
+    })
+  );
 }
