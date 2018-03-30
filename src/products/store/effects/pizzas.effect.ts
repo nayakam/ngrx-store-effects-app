@@ -47,7 +47,7 @@ export class PizzasEffect {
   );
 
   @Effect()
-  updatePizz$: Observable<Action> = this.actions$.ofType(pizzaActions.UPDATE_PIZZA).pipe(
+  updatePizza$: Observable<Action> = this.actions$.ofType(pizzaActions.UPDATE_PIZZA).pipe(
     map((action: pizzaActions.UpdatePizza) => action.payload),
     switchMap(pizza => {
       return this.pizzaService.updatePizza(pizza).pipe(
