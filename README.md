@@ -83,3 +83,14 @@ further about to dive deeper or understand in more detail what they are:
   docs
 * [npm](https://www.npmjs.com/)
 * [Webpack](https://webpack.js.org/)
+
+## References 
+* [Preloading ngrx/store with Route Guards](https://toddmotto.com/preloading-ngrx-store-route-guards)
+* [Build a Better Angular 2 Application with Redux and ngrx](http://onehungrymind.com/build-better-angular-2-application-redux-ngrx/)
+* [Building a Redux application with Angular 2 - Part 1](https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-1)
+* [Building a Redux application with Angular 2 - Part 2](https://www.pluralsight.com/guides/front-end-javascript/building-a-redux-application-with-angular-2-part-2)
+* [Getting Started with Redux](https://egghead.io/courses/getting-started-with-redux)
+* [A Cartoon Intro To Redux](https://code-cartoons.com/a-cartoon-intro-to-redux-3afb775501a6)
+* [From Redux to Angular ngrx/store](https://julienrenaux.fr/2017/02/16/from-redux-to-angular-ngrxstore/)
+* [Redux in Angular, Really :D using NGRX v4](https://rahulrsingh09.github.io/AngularConcepts/ngrx)
+
